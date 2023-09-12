@@ -12,8 +12,8 @@ async function getAllProducts(req, res) {
     });
     res.json(products);
   } catch (error) {
-    console.error("Error al buscar productos:", error);
-    res.status(500).json({ error: "Error al buscar productos" });
+    console.error("Error getting products per page:", error);
+    res.status(500).json({ error: "Error getting products" });
   }
 }
 
@@ -35,8 +35,8 @@ async function getProductsPerPage(req, res) {
 
     res.json(products);
   } catch (error) {
-    console.error("Error al obtener productos por página:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error getting products per page:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 }
 
@@ -65,8 +65,8 @@ async function getProductById(req, res) {
     const product = await Product.findByPk(req.params.id);
     res.json(product);
   } catch (error) {
-    console.error("Error al buscar el producto:", error);
-    res.status(500).json({ error: "Error al buscar el producto" });
+    console.error("Error searching product:", error);
+    res.status(500).json({ error: "Error searching product" });
   }
 }
 
@@ -103,10 +103,10 @@ async function deleteProduct(req, res) {
         id: req.params.id,
       },
     });
-    res.json({ message: "Producto eliminado con éxito" });
+    res.json({ message: "Product succefull deleted" });
   } catch (error) {
-    console.error("Error al eliminar el producto:", error);
-    res.status(500).json({ error: "Error al eliminar el producto" });
+    console.error("Error deleting product:", error);
+    res.status(500).json({ error: "Error deleting product" });
   }
 }
 
