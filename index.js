@@ -26,7 +26,7 @@ app.listen(PORT, function () {
   // db connect
   // force true: DROP TABLES
   connection
-    .sync({ force: false })
+    .sync({ force: true })
     .then(() => {
       console.log("DB successful connected");
     })
