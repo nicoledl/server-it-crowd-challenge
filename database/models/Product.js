@@ -19,6 +19,12 @@ Product.init(
       type: DataTypes.STRING,
       collate: "utf8_general_ci",
       allowNull: false,
+      validate: {
+        max: {
+          args: [200],
+          msg: "The description cannot be more than 200 characters.",
+        },
+      },
     },
     image_url: {
       type: DataTypes.STRING,
