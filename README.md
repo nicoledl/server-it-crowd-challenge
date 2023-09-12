@@ -1,1 +1,0 @@
-# server-it-crowd-challenge

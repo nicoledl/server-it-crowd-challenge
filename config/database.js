@@ -9,5 +9,6 @@ module.exports = {
   dialect: process.env.DB_DIALECT,
   define: {
     timestamps: false,
+    logging: false,
   },
 };

@@ -12,17 +12,18 @@ async function searchProducts(req, res) {
         [Op.or]: [
           {
             name: {
-              [Op.like]: `%${keyword}%`,
+              [Op.iLike]: `%${keyword}%`, // Búsqueda insensible a mayúsculas y minúsculas en MySQL
             },
           },
           {
             description: {
-              [Op.like]: `%${keyword}%`, 
+              [Op.iLike]: `%${keyword}%`, // Búsqueda insensible a mayúsculas y minúsculas en MySQL
             },
           },
           {
             "$brand.name$": {
-              [Op.like]: `%${keyword}%`,
+              // Busca coincidencias en la propiedad 'name' de la tabla 'Brand'
+              [Op.iLike]: `%${keyword}%`,
             },
           },
         ],
