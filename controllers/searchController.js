@@ -12,18 +12,17 @@ async function searchProducts(req, res) {
         [Op.or]: [
           {
             name: {
-              [Op.iLike]: `%${keyword}%`, // Búsqueda insensible a mayúsculas y minúsculas en MySQL
+              [Op.like]: Sequelize.fn("LOWER", `%${keyword}%`),
             },
           },
           {
             description: {
-              [Op.iLike]: `%${keyword}%`, // Búsqueda insensible a mayúsculas y minúsculas en MySQL
+              [Op.like]: Sequelize.fn("LOWER", `%${keyword}%`),
             },
           },
           {
             "$brand.name$": {
-              // Busca coincidencias en la propiedad 'name' de la tabla 'Brand'
-              [Op.iLike]: `%${keyword}%`,
+              [Op.like]: Sequelize.fn("LOWER", `%${keyword}%`),
             },
           },
         ],
@@ -53,17 +52,17 @@ async function searchProductsPerPage(req, res) {
         [Op.or]: [
           {
             name: {
-              [Op.like]: `%${keyword}%`,
+              [Op.like]: Sequelize.fn("LOWER", `%${keyword}%`),
             },
           },
           {
             description: {
-              [Op.like]: `%${keyword}%`,
+              [Op.like]: Sequelize.fn("LOWER", `%${keyword}%`),
             },
           },
           {
             "$brand.name$": {
-              [Op.like]: `%${keyword}%`,
+              [Op.like]: Sequelize.fn("LOWER", `%${keyword}%`),
             },
           },
         ],
