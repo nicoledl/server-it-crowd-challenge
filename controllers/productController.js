@@ -31,6 +31,7 @@ async function getProductsPerPage(req, res) {
         model: Brand,
         attributes: ["name", "image_url"],
       },
+      order: [['id', 'ASC']]
     });
 
     res.json(products);
