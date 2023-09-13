@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", productController.getAllProducts);
 
 // get products per page
-router.get("/:page", productController.getProductsPerPage);
+router.get("/page/:page", productController.getProductsPerPage);
 
 // get product by id
 router.get("/:id", productController.getProductById);
