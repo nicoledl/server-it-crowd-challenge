@@ -5,6 +5,7 @@ const { Op } = require("sequelize");
 // search product
 async function searchProducts(req, res) {
   try {
+    console.log(req.query);
     const { keyword } = req.query;
 
     const products = await Product.findAll({
@@ -12,17 +13,17 @@ async function searchProducts(req, res) {
         [Op.or]: [
           {
             name: {
-              [Op.iLike]: `%${keyword}%`,
+              [Op.like]: `%${keyword}%`,
             },
           },
           {
             description: {
-              [Op.iLike]: `%${keyword}%`,
+              [Op.like]: `%${keyword}%`,
             },
           },
           {
             "$brand.name$": {
-              [Op.iLike]: `%${keyword}%`,
+              [Op.like]: `%${keyword}%`,
             },
           },
         ],
@@ -52,17 +53,17 @@ async function searchProductsPerPage(req, res) {
         [Op.or]: [
           {
             name: {
-              [Op.iLike]: `%${keyword}%`,
+              [Op.like]: `%${keyword}%`,
             },
           },
           {
             description: {
-              [Op.iLike]: `%${keyword}%`,
+              [Op.like]: `%${keyword}%`,
             },
           },
           {
             "$brand.name$": {
-              [Op.iLike]: `%${keyword}%`,
+              [Op.like]: `%${keyword}%`,
             },
           },
         ],
