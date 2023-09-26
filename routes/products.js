@@ -1,6 +1,5 @@
 const express = require("express");
 const productController = require("../controllers/productController");
-const app = express();
 const verifyToken = require("../middleware/auth");
 const router = express.Router();
 
@@ -17,12 +16,12 @@ router.get("/:id", productController.getProductById);
 router.use(verifyToken);
 
 // create new product
-router.post("/", verifyToken, productController.createProduct);
+router.post("/", productController.createProduct);
 
 // modify product
-router.put("/:id", verifyToken, productController.updateProduct);
+router.put("/:id", productController.updateProduct);
 
 // delete product
-router.delete("/:id", verifyToken, productController.deleteProduct);
+router.delete("/:id", productController.deleteProduct);
 
 module.exports = router;

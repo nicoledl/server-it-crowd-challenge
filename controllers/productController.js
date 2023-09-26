@@ -33,7 +33,7 @@ async function getProductsPerPage(req, res) {
       },
       order: [['id', 'ASC']]
     });
-
+    console.log(products);
     res.json(products);
   } catch (error) {
     console.error("Error getting products per page:", error);

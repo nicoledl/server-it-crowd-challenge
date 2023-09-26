@@ -16,9 +16,9 @@ router.use(verifyToken);
 router.post("/", brandController.createBrand);
 
 // modify brand
-router.put("/:id",  brandController.updateBrand);
+router.put("/:id", brandController.updateBrand);
 
 // delete brand
-router.delete("/:id",  brandController.deleteBrand);
+router.delete("/:id", brandController.deleteBrand);
 
 module.exports = router;

@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const { connection } = require("./database/dbConnection");
-const authRoutes = require("./routes/authRoutes");
+const routes = require("./routes/routes");
 require("./database/asociations");
 
 // setting
@@ -14,10 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-app.use("/auth", authRoutes);
-app.use("/api/search", require("./routes/search"));
-app.use("/api/products", require("./routes/products"));
-app.use("/api/brands", require("./routes/brands"));
+app.use("/", routes);
 
 // server
 app.listen(PORT, function () {
@@ -26,7 +23,7 @@ app.listen(PORT, function () {
   // db connect
   // force true: DROP TABLES
   connection
-      .sync({ force: false })
+    .sync({ force: false })
     .then(() => {
       console.log("DB successful connected");
     })
