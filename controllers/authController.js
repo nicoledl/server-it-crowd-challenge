@@ -16,7 +16,7 @@ async function loginUser(req, res) {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const plainPassword = password;
-    const passwordMatch = await bcrypt.compare(plainPassword, hashedPassword);
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
       return res.status(401).json({ error: "Credenciales incorrectas" });

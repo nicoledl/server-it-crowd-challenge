@@ -5,7 +5,6 @@ const { Op } = require("sequelize");
 // search product
 async function searchProducts(req, res) {
   try {
-    console.log(req.query);
     const { keyword } = req.query;
 
     const products = await Product.findAll({
